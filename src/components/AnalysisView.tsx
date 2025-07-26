@@ -29,7 +29,7 @@ export function AnalysisView() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-4rem)] bg-background">
+    <div className="flex h-[calc(100vh-4rem)] bg-background overflow-hidden">
       {/* File Tree Panel */}
       <div className={cn(
         "border-r border-border bg-card transition-all duration-300 flex-shrink-0",

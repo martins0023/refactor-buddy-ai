@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { NewProjectDialog } from '@/components/NewProjectDialog'
 import { 
   FolderOpen, 
   FileCode, 
@@ -16,6 +17,7 @@ import {
   ArrowRight
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { useToast } from '@/hooks/use-toast'
 
 interface Project {
   id: string
@@ -99,7 +101,10 @@ const mockActivity: RecentActivity[] = [
 
 export function Dashboard() {
   const navigate = useNavigate()
+  const { toast } = useToast()
   const [selectedProject, setSelectedProject] = useState<string | null>(null)
+  const [projects, setProjects] = useState<Project[]>(mockProjects)
+  const [isNewProjectDialogOpen, setIsNewProjectDialogOpen] = useState(false)
 
   const handleProjectSelect = (projectId: string) => {
     setSelectedProject(projectId)
@@ -132,11 +137,19 @@ export function Dashboard() {
     }
   }
 
-  const totalIssuesFound = mockProjects.reduce((sum, p) => sum + p.issuesFound, 0)
-  const totalIssuesFixed = mockProjects.reduce((sum, p) => sum + p.issuesFixed, 0)
+  const handleNewProject = (newProject: Project) => {
+    setProjects(prev => [newProject, ...prev])
+    toast({
+      title: "Project Added",
+      description: `${newProject.name} has been added to your dashboard.`
+    })
+  }
+
+  const totalIssuesFound = projects.reduce((sum, p) => sum + p.issuesFound, 0)
+  const totalIssuesFixed = projects.reduce((sum, p) => sum + p.issuesFixed, 0)
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 max-w-7xl mx-auto">
       {/* Welcome Section */}
       <div className="space-y-2">
         <h1 className="text-3xl font-headline font-bold text-foreground">Welcome to CRON</h1>
@@ -154,7 +167,7 @@ export function Dashboard() {
           <CardContent>
             <div className="flex items-center gap-2">
               <FolderOpen className="h-5 w-5 text-primary" />
-              <span className="text-2xl font-headline font-bold text-foreground">{mockProjects.length}</span>
+              <span className="text-2xl font-headline font-bold text-foreground">{projects.length}</span>
             </div>
           </CardContent>
         </Card>
@@ -211,14 +224,19 @@ export function Dashboard() {
                     Select a project to start analyzing your code
                   </CardDescription>
                 </div>
-                <Button variant="cron" size="sm" className="gap-2">
+                <Button 
+                  variant="cron" 
+                  size="sm" 
+                  className="gap-2"
+                  onClick={() => setIsNewProjectDialogOpen(true)}
+                >
                   <Plus className="h-4 w-4" />
                   New Project
                 </Button>
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              {mockProjects.map((project) => (
+              {projects.map((project) => (
                 <div
                   key={project.id}
                   className="p-4 border border-border rounded-lg hover:bg-muted/50 cursor-pointer transition-all duration-200 hover:scale-[1.02]"
@@ -301,6 +319,12 @@ export function Dashboard() {
           </Card>
         </div>
       </div>
+
+      <NewProjectDialog
+        open={isNewProjectDialogOpen}
+        onOpenChange={setIsNewProjectDialogOpen}
+        onProjectCreated={handleNewProject}
+      />
     </div>
   )
 }

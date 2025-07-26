@@ -34,7 +34,7 @@ const Help = () => {
   ]
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 max-w-4xl mx-auto min-h-0">
       <div className="mb-6">
         <h1 className="text-3xl font-headline font-bold text-foreground">Help & Support</h1>
         <p className="text-lg text-muted-foreground font-body">
