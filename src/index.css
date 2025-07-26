@@ -2,95 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* CRON Design System - AI Code Refactoring Assistant
+Colors are defined in HSL format for better manipulation */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Solar Flare Theme (Light/Default) */
+    --background: 48 100% 95%; /* Cornsilk #FFF8DC */
+    --foreground: 0 0% 20%; /* Dark Gray #333333 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 48 100% 97%;
+    --card-foreground: 0 0% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 48 100% 97%;
+    --popover-foreground: 0 0% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 16 100% 66%; /* Coral #FF7F50 */
+    --primary-foreground: 48 100% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 51 100% 50%; /* Gold #FFD700 */
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 83%; /* Light Gray #D3D3D3 */
+    --muted-foreground: 0 0% 66%; /* Dark Gray #A9A9A9 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 51 100% 50%; /* Gold accent */
+    --accent-foreground: 0 0% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 83%;
+    --input: 0 0% 83%;
+    --ring: 16 100% 66%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Code editor specific */
+    --editor-background: 48 100% 98%;
+    --editor-foreground: 0 0% 15%;
+    --editor-selection: 51 100% 85%;
+    --editor-line-number: 0 0% 60%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Suggestion panel */
+    --suggestion-background: 48 100% 97%;
+    --suggestion-border: 51 100% 70%;
+    --suggestion-hover: 51 100% 90%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Status indicators */
+    --status-success: 120 60% 50%;
+    --status-warning: 38 92% 50%;
+    --status-error: 0 84% 60%;
+    --status-info: 200 100% 50%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Performance optimization colors */
+    --perf-critical: 0 84% 60%;
+    --perf-moderate: 38 92% 50%;
+    --perf-minor: 120 60% 50%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Matter Theme */
+    --background: 235 39% 18%; /* Deep Indigo #1A1A2E */
+    --foreground: 0 0% 88%; /* Light Gray #E0E0E0 */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 235 39% 21%;
+    --card-foreground: 0 0% 88%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 235 39% 21%;
+    --popover-foreground: 0 0% 88%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 181 100% 41%; /* Dark Turquoise #00CED1 */
+    --primary-foreground: 235 39% 18%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 274 59% 60%; /* Medium Purple #9370DB */
+    --secondary-foreground: 0 0% 88%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 50%; /* Medium Gray #808080 */
+    --muted-foreground: 0 0% 25%; /* Dark Gray #404040 */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 274 59% 60%; /* Purple accent */
+    --accent-foreground: 0 0% 88%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 47%;
+    --destructive-foreground: 0 0% 88%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 181 100% 41%;
+
+    /* Code editor specific */
+    --editor-background: 235 39% 15%;
+    --editor-foreground: 0 0% 92%;
+    --editor-selection: 181 100% 25%;
+    --editor-line-number: 0 0% 60%;
+
+    /* Suggestion panel */
+    --suggestion-background: 235 39% 20%;
+    --suggestion-border: 181 100% 30%;
+    --suggestion-hover: 181 100% 15%;
+
+    /* Status indicators */
+    --status-success: 120 60% 60%;
+    --status-warning: 38 92% 60%;
+    --status-error: 0 84% 70%;
+    --status-info: 181 100% 60%;
+
+    /* Performance optimization colors */
+    --perf-critical: 0 84% 70%;
+    --perf-moderate: 38 92% 60%;
+    --perf-minor: 120 60% 60%;
+  }
+
+  /* Font definitions */
+  .font-headline {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-code {
+    font-family: 'Fira Code', monospace;
   }
 }
 

@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'headline': ['Space Grotesk', 'sans-serif'],
+				'body': ['Inter', 'sans-serif'],
+				'code': ['Fira Code', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,15 +57,27 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				editor: {
+					background: 'hsl(var(--editor-background))',
+					foreground: 'hsl(var(--editor-foreground))',
+					selection: 'hsl(var(--editor-selection))',
+					'line-number': 'hsl(var(--editor-line-number))'
+				},
+				suggestion: {
+					background: 'hsl(var(--suggestion-background))',
+					border: 'hsl(var(--suggestion-border))',
+					hover: 'hsl(var(--suggestion-hover))'
+				},
+				status: {
+					success: 'hsl(var(--status-success))',
+					warning: 'hsl(var(--status-warning))',
+					error: 'hsl(var(--status-error))',
+					info: 'hsl(var(--status-info))'
+				},
+				perf: {
+					critical: 'hsl(var(--perf-critical))',
+					moderate: 'hsl(var(--perf-moderate))',
+					minor: 'hsl(var(--perf-minor))'
 				}
 			},
 			borderRadius: {
